@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Grace Haven Youth Camp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="container nav">
+        <div class="brand">
+          <span class="brand-mark">✝</span>
+          <span>Grace Haven Youth Camp</span>
+        </div>
+        <nav>
+          <a href="#about">About</a>
+          <a href="#programs">Programs</a>
+          <a href="#register">Register</a>
+          <a href="admin.html" class="nav-button">Staff Login</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="container hero-inner">
+          <div class="hero-copy">
+            <p class="eyebrow">Rooted in faith • Growing in grace</p>
+            <h1>Faith-filled adventures for growing hearts and minds.</h1>
+            <p class="lead">
+              A Christ-centered summer camp where young people discover purpose, deepen their
+              faith, build lasting friendships, and grow in courage and character.
+            </p>
+            <div class="hero-actions">
+              <a href="#register" class="primary-btn">Register Now</a>
+              <a href="#programs" class="secondary-btn">Explore Programs</a>
+            </div>
+            <ul class="hero-points">
+              <li>Biblical teaching</li>
+              <li>Outdoor adventure</li>
+              <li>Joyful community</li>
+            </ul>
+          </div>
+
+          <div class="hero-card">
+            <div class="stats-card">
+              <div>
+                <strong>350+</strong>
+                <span>Campers</span>
+              </div>
+              <div>
+                <strong>12</strong>
+                <span>Activities</span>
+              </div>
+              <div>
+                <strong>8:1</strong>
+                <span>Mentor ratio</span>
+              </div>
+            </div>
+            <div class="mini-schedule">
+              <h3>Camp Season</h3>
+              <p>June 15 – August 10</p>
+              <p>Monday to Friday</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="about" class="section">
+        <div class="container two-col">
+          <div>
+            <p class="section-tag">Our Mission</p>
+            <h2>Helping young people grow in faith, hope, and community.</h2>
+          </div>
+          <div>
+            <p>
+              Grace Haven Youth Camp is a welcoming Christian camp experience where children and
+              teens are encouraged to know Jesus, discover their gifts, and live with confidence,
+              compassion, and joy.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section id="programs" class="section alt-section">
+        <div class="container">
+          <div class="section-heading">
+            <p class="section-tag">Programs</p>
+            <h2>Find the perfect place for your child to thrive.</h2>
+          </div>
+          <div class="program-grid">
+            <article class="program-card">
+              <span class="icon">⛺</span>
+              <h3>Adventure & Outdoor</h3>
+              <p>Hiking, campfire devotions, team challenges, and outdoor discovery.</p>
+            </article>
+            <article class="program-card">
+              <span class="icon">🎨</span>
+              <h3>Creative Arts</h3>
+              <p>Music, worship, storytelling, painting, and moments of joyful expression.</p>
+            </article>
+            <article class="program-card">
+              <span class="icon">⚽</span>
+              <h3>Sports & Wellness</h3>
+              <p>Healthy living, teamwork, games, and active fun with purpose.</p>
+            </article>
+            <article class="program-card">
+              <span class="icon">💬</span>
+              <h3>Leadership & Service</h3>
+              <p>Growing confident, kind, and servant-hearted leaders for tomorrow.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="register" class="section register-section">
+        <div class="container register-wrap">
+          <div class="register-info">
+            <p class="section-tag">Registration</p>
+            <h2>Reserve a place for your child to grow in faith and friendship.</h2>
+            <p>
+              Complete the form below and our camp team will reach out with confirmation and next
+              steps for a joyful, faith-filled experience.
+            </p>
+            <div class="info-box">
+              <strong>Early Bird Blessing:</strong>
+              <span>Receive 10% off registrations submitted before April 30.</span>
+            </div>
+          </div>
+
+          <form id="registrationForm" class="registration-form">
+            <div class="form-grid">
+              <label>
+                Parent/Guardian Name
+                <input type="text" name="guardianName" required />
+              </label>
+              <label>
+                Email Address
+                <input type="email" name="email" required />
+              </label>
+              <label>
+                Child Name
+                <input type="text" name="childName" required />
+              </label>
+              <label>
+                Age
+                <input type="number" name="age" min="5" max="18" required />
+              </label>
+              <label>
+                Phone Number
+                <input type="tel" name="phone" required />
+              </label>
+              <label>
+                Program
+                <select name="program" required>
+                  <option value="">Select program</option>
+                  <option value="Adventure & Outdoor">Adventure & Outdoor</option>
+                  <option value="Creative Arts">Creative Arts</option>
+                  <option value="Sports & Wellness">Sports & Wellness</option>
+                  <option value="Leadership & Service">Leadership & Service</option>
+                </select>
+              </label>
+              <label class="full-width">
+                Preferred Session
+                <select name="session" required>
+                  <option value="">Select session</option>
+                  <option value="Session 1: June 15 – July 3">Session 1: June 15 – July 3</option>
+                  <option value="Session 2: July 6 – July 24">Session 2: July 6 – July 24</option>
+                  <option value="Session 3: July 27 – August 10">Session 3: July 27 – August 10</option>
+                </select>
+              </label>
+              <label class="full-width">
+                Additional Notes
+                <textarea name="notes" rows="4" placeholder="Tell us about your child’s interests, strengths, or any special needs."></textarea>
+              </label>
+            </div>
+            <button type="submit" class="primary-btn submit-btn">Submit Registration</button>
+            <p id="formMessage" class="form-message" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <p>© 2026 Grace Haven Youth Camp</p>
+        <a href="admin.html">Staff Portal</a>
+      </div>
+    </footer>
+
+    <script src="app.js"></script>
+  </body>
+</html>
