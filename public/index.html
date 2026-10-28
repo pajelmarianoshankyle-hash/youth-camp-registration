@@ -1,0 +1,116 @@
+const sqlite3 = require('sqlite3').verbose();
+
+const db = new sqlite3.Database('./camp.db');
+
+function run(sql, params = []) {
+  return new Promise((resolve, reject) => {
+    db.run(sql, params, function (err) {
+      if (err) reject(err);
+      else resolve({ id: this.lastID, changes: this.changes });
+    });
+  });
+}
+
+function all(sql, params = []) {
+  return new Promise((resolve, reject) => {
+    db.all(sql, params, (err, rows) => {
+      if (err) reject(err);
+      else resolve(rows);
+    });
+  });
+}
+
+function get(sql, params = []) {
+  return new Promise((resolve, reject) => {
+    db.get(sql, params, (err, row) => {
+      if (err) reject(err);
+      else resolve(row);
+    });
+  });
+}
+
+async function initDatabase() {
+  await run(`
+    CREATE TABLE IF NOT EXISTS registrations (
+      id TEXT PRIMARY KEY,
+      guardian_name TEXT,
+      email TEXT,
+      phone TEXT,
+      child_name TEXT,
+      age INTEGER,
+      program TEXT,
+      session TEXT,
+      notes TEXT,
+      status TEXT DEFAULT 'Pending',
+      amount REAL DEFAULT 0,
+      payment_status TEXT DEFAULT 'Unpaid',
+      stripe_session_id TEXT,
+      created_at TEXT,
+      approved_at TEXT,
+      paid_at TEXT
+    )
+  `);
+}
+
+async function addRegistration(registration) {
+  return run(
+    `INSERT INTO registrations (
+      id, guardian_name, email, phone, child_name, age, program, session, notes, status, amount, payment_status, created_at, approved_at, paid_at, stripe_session_id
+    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)`,
+    [
+      registration.id,
+      registration.guardian_name,
+      registration.email,
+      registration.phone,
+      registration.child_name,
+      registration.age,
+      registration.program,
+      registration.session,
+      registration.notes,
+      registration.status,
+      registration.amount,
+      registration.payment_status,
+      registration.created_at,
+      registration.approved_at,
+      registration.paid_at,
+      null
+    ]
+  );
+}
+
+async function getRegistrations() {
+  return all(`SELECT * FROM registrations ORDER BY created_at DESC`);
+}
+
+async function getRegistrationById(id) {
+  return get(`SELECT * FROM registrations WHERE id = ?`, [id]);
+}
+
+async function approveRegistration(id) {
+  await run(`UPDATE registrations SET status = 'Approved', approved_at = ? WHERE id = ?`, [new Date().toISOString(), id]);
+  return getRegistrationById(id);
+}
+
+async function deleteRegistration(id) {
+  return run(`DELETE FROM registrations WHERE id = ?`, [id]);
+}
+
+async function updatePaymentStatus(id, paymentStatus, stripeSessionId) {
+  await run(`UPDATE registrations SET payment_status = ?, stripe_session_id = ?, paid_at = ? WHERE id = ?`, [
+    paymentStatus,
+    stripeSessionId,
+    paymentStatus === 'Paid' ? new Date().toISOString() : null,
+    id
+  ]);
+  return getRegistrationById(id);
+}
+
+module.exports = {
+  initDatabase,
+  addRegistration,
+  getRegistrations,
+  getRegistrationById,
+  approveRegistration,
+  deleteRegistration,
+  updatePaymentStatus
+};

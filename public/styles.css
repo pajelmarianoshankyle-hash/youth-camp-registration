@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Staff Portal | Grace Haven Youth Camp</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body class="admin-body">
+    <header class="site-header admin-header">
+      <div class="container nav">
+        <div class="brand">
+          <span class="brand-mark">✝</span>
+          <span>Grace Haven Youth Camp</span>
+        </div>
+        <nav>
+          <a href="index.html">Home</a>
+          <a href="admin.html" class="nav-button">Staff</a>
+        </nav>
+      </div>
+    </header>
+
+    <main class="admin-main">
+      <section id="adminLoginSection" class="admin-login-wrap">
+        <div class="login-card">
+          <p class="section-tag">Staff Access</p>
+          <h2>Camp Administration</h2>
+          <form id="adminLoginForm" class="admin-form">
+            <label>
+              Username
+              <input type="text" id="adminUsername" required />
+            </label>
+            <label>
+              Password
+              <input type="password" id="adminPassword" required />
+            </label>
+            <button type="submit" class="primary-btn">Login</button>
+            <p id="loginMessage" class="form-message" aria-live="polite"></p>
+          </form>
+        </div>
+      </section>
+
+      <section id="adminDashboard" class="admin-dashboard hidden">
+        <div class="container dashboard-container">
+          <div class="dashboard-topbar">
+            <div>
+              <p class="section-tag">Dashboard</p>
+              <h2>Registrations</h2>
+            </div>
+            <div class="dashboard-actions">
+              <button id="refreshBtn" class="secondary-btn">Refresh</button>
+              <button id="logoutBtn" class="ghost-btn">Logout</button>
+            </div>
+          </div>
+
+          <div class="stats-row">
+            <div class="stat-box">
+              <span>Total</span>
+              <strong id="totalCount">0</strong>
+            </div>
+            <div class="stat-box pending">
+              <span>Pending</span>
+              <strong id="pendingCount">0</strong>
+            </div>
+            <div class="stat-box approved">
+              <span>Approved</span>
+              <strong id="approvedCount">0</strong>
+            </div>
+          </div>
+
+          <div class="table-wrapper">
+            <table>
+              <thead>
+                <tr>
+                  <th>Child</th>
+                  <th>Parent</th>
+                  <th>Program</th>
+                  <th>Session</th>
+                  <th>Status</th>
+                  <th>Payment</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="registrationsTableBody"></tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>
